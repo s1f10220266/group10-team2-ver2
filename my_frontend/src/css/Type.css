@@ -1,0 +1,63 @@
+.judge {
+    padding: 5px;
+}
+
+.explain {
+    padding: 5px;
+}
+
+.txt {
+    padding: 3px;
+}
+
+.system {
+    font-weight: bold;
+}
+
+p {
+  font-family: "Hiragino Sans";
+  font-size: 35px;
+  margin: 0%;
+}
+
+#title {
+  font-family: "Hiragino Sans";
+  font-size: 60px;
+  margin: 0%;
+}
+
+hr {
+    padding: 0px;
+    margin: 0%;
+}
+
+.userInput {
+    padding-bottom: 60px;
+}
+
+.output {
+    font-weight: 600;
+    font-size: 26px;
+    font-family: "Hiragino Sans";
+}
+
+.pageTop {
+    border-bottom: solid #333333;
+}
+
+.attention {
+    padding: 10px;
+}
+
+.attentionTxt {
+    font-size: 20px;
+    border-bottom: 5px dashed #5a63c6;
+    font-family: "Hiragino Sans";
+}
+
+.type {
+    border-bottom: 5px dashed #5a63c6;
+    font-size: 50px;
+    font-family: "Hiragino Sans";
+
+}

@@ -1,0 +1,67 @@
+.balloon-007 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 100%; /* 親要素に幅を合わせる */
+    padding: .8em 1.2em;
+    border: 3px solid #2589d0;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333333;
+    text-align: center;
+    box-sizing: border-box; /* パディングを含めたサイズ調整 */
+}
+
+.balloon-007::before,
+.balloon-007::after {
+    position: absolute;
+    right: -15px;
+    width: 15px;
+    height: 30px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    content: '';
+    box-sizing: border-box;
+}
+
+.balloon-007::before {
+    background-color: #2589d0;
+}
+
+.balloon-007::after {
+    right: -11px;
+    background-color: #fff;
+}
+
+.output {
+    font-weight: 600;
+    font-size: 26px;
+    font-family: "Hiragino Sans";
+}
+
+.btnArea {
+    padding: 20px;
+}
+
+.ans {
+    padding: 10px;
+}
+
+.pageTop {
+    border-bottom: #333333 solid;
+}
+
+.attention {
+    padding: 10px;
+}
+
+.attentionTxt {
+    font-size: 20px;
+    border-bottom: 5px dashed #5a63c6;
+    font-family: "Hiragino Sans";
+}
+
+.ai {
+    color: #2589d0;
+}

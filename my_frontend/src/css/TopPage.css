@@ -1,0 +1,22 @@
+.overview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-family: "Hiragino Sans";
+  font-weight: 600;
+  font-size: 90px;
+}
+
+.ai {
+  color: #2589d0;
+
+}
+
+.startBtn {
+  padding: 30px;
+}
+
