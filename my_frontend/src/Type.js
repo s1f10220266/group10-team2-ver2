@@ -5,6 +5,7 @@ import './css/Type.css';
 function Type() {
     const apiUrl = "https://uranai-iniad.onrender.com";
     const typeApiUrl = `${apiUrl}/api/type`;
+    const scenarioApiUrl = `${apiUrl}/api/scenario`;
 
     const [typeResult, setTypeResult] = useState('');
     const [typeExplain, setTypeExplain] = useState('');
@@ -32,7 +33,7 @@ function Type() {
 
     const handleScenarioGenerate = async (e) => {
         e.preventDefault();
-        const receive = await fetch(typeApiUrl, {
+        const receive = await fetch(scenarioApiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
