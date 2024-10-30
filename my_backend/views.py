@@ -1,6 +1,7 @@
 from flask import Flask, send_from_directory, request, jsonify
 from flask_cors import CORS
 import os
+import logging
 from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.document_loaders import TextLoader
