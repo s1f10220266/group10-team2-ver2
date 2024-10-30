@@ -27,6 +27,7 @@ def serve_frontend():
 # 環境変数
 openai_api_key = os.getenv("OPENAI_API_KEY")
 openai_api_base = os.getenv("OPENAI_API_BASE")
+logging.info(f"APIキー: {openai_api_key}, APIベース: {openai_api_base}")
 llm = ChatOpenAI(api_key=openai_api_key, base_url=openai_api_base, model="gpt-4o-mini", temperature=0)
 file_path = os.path.join(os.path.dirname(__file__), 'learn_16personalities.txt')
 
@@ -179,5 +180,5 @@ def scenario_gen():
         else:
             return jsonify({"error": "No scenario found"}), 404  # シナリオがない場合
     
-if __name__ == "__main__":
-    my_app.run()
+# if __name__ == "__main__":
+#     my_app.run()

@@ -4,7 +4,6 @@ import './css/Type.css';
 
 function Type() {
     const apiUrl = "https://uranai-iniad.onrender.com";
-    const scenarioApiUrl = `${apiUrl}/api/scenario`;
     const typeApiUrl = `${apiUrl}/api/type`;
 
     const [typeResult, setTypeResult] = useState('');
