@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import './css/Scenario.css';
 
 function Scenario() {
+    const apiUrl = "https://uranai-iniad.onrender.com";
+    const scenarioApiUrl = `${apiUrl}/api/scenario`;
     const [userScenario, setUserScenario] = useState('');
     const [userJob, setUserJob] = useState('');
     const [userType, setUserType] = useState('');
     useEffect(() => {
         const fetchScenario = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:5001/api/scenario');
+                const response = await fetch(scenarioApiUrl);
                 if (response.ok) {
                     const data = await response.json();
                     setUserScenario(data.scenario);

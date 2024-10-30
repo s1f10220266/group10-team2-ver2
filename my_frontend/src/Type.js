@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import './css/Type.css';
 
 function Type() {
+    const apiUrl = "https://uranai-iniad.onrender.com";
+    const scenarioApiUrl = `${apiUrl}/api/scenario`;
+    const typeApiUrl = `${apiUrl}/api/type`;
+
     const [typeResult, setTypeResult] = useState('');
     const [typeExplain, setTypeExplain] = useState('');
     const [job, setJob] = useState('');
@@ -12,7 +16,7 @@ function Type() {
     useEffect(() => {
         const fetchTypeResult = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:5001/api/type');
+                const response = await fetch(typeApiUrl);
                 if (response.ok) {
                     const data = await response.json();
                     setTypeResult(data.typeResult);
@@ -29,7 +33,7 @@ function Type() {
 
     const handleScenarioGenerate = async (e) => {
         e.preventDefault();
-        const receive = await fetch('http://127.0.0.1:5001/api/scenario', {
+        const receive = await fetch(typeApiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

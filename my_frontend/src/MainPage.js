@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import './css/MainPage.css';
 
 function MainPage() {
+    const apiUrl = "https://uranai-iniad.onrender.com";
+    const typeApiUrl = `${apiUrl}/api/type`;
+
     const [selectedNumber, setSelectedNumber] = useState(0);
     const navigate = useNavigate();  // useNavigate フックに変更
 
@@ -57,7 +60,7 @@ function MainPage() {
         });
     
         try {
-            const response = await fetch('http://127.0.0.1:5001/api/type', {
+            const response = await fetch(typeApiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
