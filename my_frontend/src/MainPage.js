@@ -99,7 +99,7 @@ function MainPage() {
                 
                 
                 <div className='col-4'>
-                    <img className='img-fluid' src={`${process.env.PUBLIC_URL}/img/uranaiCat.jpg`} alt="説明" />
+                    <img className='img-fluid' src="/static/img/uranaiCat.jpg" alt="ようこそ" />
                 </div>
             </div>
 

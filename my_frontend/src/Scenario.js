@@ -68,7 +68,7 @@ function Scenario() {
                 </div>
             </div>
             <div className='col-4'>
-                <img className='img-fluid w-100' src={`${process.env.PUBLIC_URL}/img/catFortuneTelling.gif`} alt="説明" />
+                <img className='img-fluid w-100' src="/static/img/catFortuneTelling.gif" alt="占い中" />
             </div>
         </div>
 

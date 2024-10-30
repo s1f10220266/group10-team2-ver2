@@ -16,7 +16,7 @@ function TopPage() {
             </div>
           </div>
           <div className="col-4">
-            <img className="img-fluid w-100" src={`${process.env.PUBLIC_URL}/img/catGoodBye.png`} alt="GoodBye" />
+            <img className="img-fluid w-100" src="/static/img/catGoodBye.png" alt="GoodBye" />
           </div>
         </div>
         <div className="row justify-content-center mt-3">
