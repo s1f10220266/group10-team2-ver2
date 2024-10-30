@@ -33,18 +33,23 @@ function Type() {
 
     const handleScenarioGenerate = async (e) => {
         e.preventDefault();
-        const receive = await fetch(scenarioApiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({job}),
-        });
-        const result = await receive.json(); 
-        if (result.scenarioReady) {
-            navigate("/scenario");
+        try {
+            const receive = await fetch(scenarioApiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ job }),
+            });
+            const result = await receive.json();
+            if (result.ready) {
+                navigate("/scenario");
+            } else {
+                console.error("シナリオの準備に失敗しました");
+            }
+        } catch (error) {
+            console.error("エラーが発生しました:", error);
         }
-    }
+    };
+    
 
 
 
