@@ -40,11 +40,12 @@ function Type() {
                 body: JSON.stringify({ job }),
             });
             const result = await receive.json();
-            if (result.ready) {
+            if (result.scenarioReady) {
                 navigate("/scenario");
             } else {
                 console.error("シナリオの準備に失敗しました");
             }
+
         } catch (error) {
             console.error("エラーが発生しました:", error);
         }
