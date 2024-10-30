@@ -28,6 +28,9 @@ def serve_frontend():
 openai_api_key = os.getenv("OPENAI_API_KEY")
 openai_api_base = os.getenv("OPENAI_API_BASE")
 llm = ChatOpenAI(api_key=openai_api_key, base_url=openai_api_base, model="gpt-4o-mini", temperature=0)
+file_path = os.path.join(os.path.dirname(__file__), 'learn_16personalities.txt')
+
+
 
 #Embeddingを行うモデル
 embeddings_model = OpenAIEmbeddings(
@@ -35,7 +38,7 @@ embeddings_model = OpenAIEmbeddings(
 )
 
 #テキストファイルを読み込み
-loader = TextLoader("./learn_16personalities.txt")
+loader = TextLoader(file_path)
 doc = loader.load()
 #読み込んだ内容をチャンク化
 splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=20) #分割するためのオブジェクト
