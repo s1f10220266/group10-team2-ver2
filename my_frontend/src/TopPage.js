@@ -4,7 +4,7 @@ import './css/TopPage.css';
 
 function TopPage() {
   const backgroundStyle = {
-    backgroundImage: `/static/img/uranaiBackGround.jpg)`,
+    backgroundImage: `url('/static/img/uranaiBackGround.jpg')`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'contain',

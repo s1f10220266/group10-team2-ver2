@@ -34,6 +34,7 @@ function Type() {
 
     const handleScenarioGenerate = async (e) => {
         e.preventDefault();
+        setClicked(true);
         try {
             const receive = await fetch(scenarioApiUrl, {
                 method: 'POST',
@@ -52,14 +53,6 @@ function Type() {
         }
     };
 
-    const generationStart = () => {
-        setClicked(true);
-        navigate("/scenario");
-    }
-    
-
-
-
   return (
     <>
     <div className="container-fluid text-center">
@@ -75,7 +68,7 @@ function Type() {
                 {typeResult ? (
                         <p className='yourTypeIs'>あなたの性格タイプは <strong className='type'>{typeResult}</strong> です！</p>
                     ) : (
-                        <p className='YourTypeIs'>分析中...</p>
+                        <p className='yourTypeIs'>分析中...</p>
                 )}
             </div>
         </div>
@@ -120,7 +113,7 @@ function Type() {
                 <form onSubmit={handleScenarioGenerate}>
                     <div className='input-group'>
                         <input autoComplete='off' className='form-control form-control-sm text-center' type="text" name="userJob" value={job} onChange={(e) => setJob(e.target.value)} placeholder='例) プログラマー' />
-                        <button type="submit" className="btn btn-outline-primary" onClick={generationStart}>占い開始！</button>
+                        <button type="submit" className="btn btn-outline-primary">占い開始！</button>
                     </div>
                 </form>
             </div>
