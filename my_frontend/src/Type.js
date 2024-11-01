@@ -77,7 +77,7 @@ function Type() {
             <div className='col-auto'>
                 {typeExplain ? (
                     <div style={{whiteSpace: 'pre-line'}}><p className='output'>{typeExplain}</p></div>
-                ) : (<p>分析中...</p>
+                ) : (<p className='yourTypeIs'>分析中...</p>
 
                 )}
             </div>
@@ -101,7 +101,10 @@ function Type() {
         {clicked ? (
             <div className='row justify-content-center text-center'>
                 <div className='col-auto'>
-                    <p className='genStart'>uranaiCatちゃんが占いを開始しました！！</p>
+                    <p className='genStart'>
+                        uranaiCatちゃんが占いを開始しました！！<br />
+                        少々お待ちください...
+                    </p>
                 </div>
             </div>
         ) : (
