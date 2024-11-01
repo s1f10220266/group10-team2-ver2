@@ -10,6 +10,7 @@ function Type() {
     const [typeResult, setTypeResult] = useState('');
     const [typeExplain, setTypeExplain] = useState('');
     const [job, setJob] = useState('');
+    const [clicked, setClicked] = useState(false);
     const navigate = useNavigate();
 
 
@@ -50,6 +51,11 @@ function Type() {
             console.error("エラーが発生しました:", error);
         }
     };
+
+    const generationStart = () => {
+        setClicked(true);
+        navigate("/scenario");
+    }
     
 
 
@@ -67,9 +73,9 @@ function Type() {
         <div className='row justify-content-center judge'>
             <div className='col-auto'>
                 {typeResult ? (
-                        <p>あなたの性格タイプは <strong className='type'>{typeResult}</strong> です！</p>
+                        <p className='yourTypeIs'>あなたの性格タイプは <strong className='type'>{typeResult}</strong> です！</p>
                     ) : (
-                        <p>分析中...</p>
+                        <p className='YourTypeIs'>分析中...</p>
                 )}
             </div>
         </div>
@@ -99,12 +105,22 @@ function Type() {
             </div>
         </div>
 
+        {clicked ? (
+            <div className='row justify-content-center text-center'>
+                <div className='col-auto'>
+                    <p className='genStart'>uranaiCatちゃんが占いを開始しました！！</p>
+                </div>
+            </div>
+        ) : (
+            <p></p>
+        )}
+
         <div className="row justify-content-center userInput">
             <div className="col-4">
                 <form onSubmit={handleScenarioGenerate}>
                     <div className='input-group'>
                         <input autoComplete='off' className='form-control form-control-sm text-center' type="text" name="userJob" value={job} onChange={(e) => setJob(e.target.value)} placeholder='例) プログラマー' />
-                        <button type="submit" className="btn btn-outline-primary">占い開始！</button>
+                        <button type="submit" className="btn btn-outline-primary" onClick={generationStart}>占い開始！</button>
                     </div>
                 </form>
             </div>

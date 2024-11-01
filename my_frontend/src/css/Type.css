@@ -14,7 +14,7 @@
     font-weight: bold;
 }
 
-p {
+.youtTypeIs {
   font-family: "Hiragino Sans";
   font-size: 35px;
   margin: 0%;
@@ -26,10 +26,6 @@ p {
   margin: 0%;
 }
 
-hr {
-    padding: 0px;
-    margin: 0%;
-}
 
 .userInput {
     padding-bottom: 60px;

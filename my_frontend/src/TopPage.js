@@ -4,7 +4,7 @@ import './css/TopPage.css';
 
 function TopPage() {
   const backgroundStyle = {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/img/uranaiBackGround.jpg)`,
+    backgroundImage: `/static/img/uranaiBackGround.jpg)`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'contain',
@@ -17,7 +17,15 @@ function TopPage() {
         <div className="text-center">
           <div className='row'>
             <div className='col'>
-              <h1>URAN<span className='ai'>AI</span></h1>
+              <h1 className='appName'>URAN<span className='ai'>AI</span></h1>
+            </div>
+          </div>
+          <div className='row justify-content-center text-center intro-area'>
+            <div className='col-auto'>
+              <p className='intro'>
+                "URANAI"は、近年注目されている生成AIを利用した就活サービスです<br />
+                現在も開発中のサービスです！お楽しみいただけたら幸いです！
+              </p>
             </div>
           </div>
           <div className='row startBtn'>

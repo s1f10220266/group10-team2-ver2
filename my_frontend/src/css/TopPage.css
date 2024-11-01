@@ -5,7 +5,7 @@
   height: 100vh;
 }
 
-h1 {
+.appName {
   font-family: "Hiragino Sans";
   font-weight: 600;
   font-size: 90px;
@@ -17,6 +17,40 @@ h1 {
 }
 
 .startBtn {
-  padding: 30px;
+  padding: 5px;
 }
+
+.intro {
+  font-family: "Hiragino Sans";
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.intro-area {
+  position: relative;
+  padding: 0.10em 1em;
+  border: solid 2px black;
+  border-radius: 3px 0 3px 0;
+}
+
+.intro-area:before, .intro-area:after {
+  content: '';
+  position: absolute;
+  width:15px;
+  height: 15px;
+  border: solid 2px black;
+  border-radius: 50%;
+}
+
+.intro-area:after {
+  top:-12px;
+  left:-12px;
+}
+
+.intro-area:before {
+  bottom:-12px;
+  right:-12px;
+}
+
+
 
