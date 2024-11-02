@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, request, jsonify
+from flask import Flask, send_from_directory, request, jsonify, session
 from flask_cors import CORS
 import os
 import logging
@@ -12,12 +12,13 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 
 my_app = Flask(__name__, static_folder='static')
+my_app.secret_key = os.getenv("FLASK_SECRET_KEY")
 CORS(my_app)
 
-# グローバル変数に性格診断の結果を一時的に保持
-latest_result = None
-scenario = None  # シナリオを保持
-user_job = None
+# # グローバル変数に性格診断の結果を一時的に保持
+# latest_result = None
+# scenario = None  # シナリオを保持
+# user_job = None
 
 @my_app.route('/')
 def serve_frontend():
@@ -91,7 +92,7 @@ rag_chain = (
 
 @my_app.route('/api/type', methods=["POST", "GET"])
 def user_type():
-    global latest_result
+    # global latest_result
     
     if request.method == "POST":
         rcv = request.get_json()
@@ -125,15 +126,15 @@ def user_type():
             result += "J"
 
         # 診断結果を保持
-        latest_result = result
+        session['USERTYPE'] = result
             #print("診断結果が保存されました:", latest_result)
         return jsonify({"ready": True})
 
     elif request.method == "GET":
             #print("GETリクエストが呼び出されました")
-        if latest_result:
-            ai_explains_type = rag_chain.invoke(latest_result)
-            return jsonify({"typeResult": latest_result, "typeExplain": ai_explains_type})
+        if 'USERTYPE' in session:
+            ai_explains_type = rag_chain.invoke(session['USERTYPE'])
+            return jsonify({"typeResult": session['USERTYPE'], "typeExplain": ai_explains_type})
         else:
             return jsonify({"error": "No result found"}), 404
 
@@ -167,17 +168,17 @@ scenario_chain = (
 
 @my_app.route('/api/scenario', methods=['POST', 'GET'])
 def scenario_gen():
-    global scenario  # グローバル変数を参照
-    global user_job
+    # global scenario  # グローバル変数を参照
+    # global user_job
     if request.method == 'POST':
         rcv = request.get_json()
-        user_job = rcv.get("job", "")
-        input = f"ユーザの性格タイプは{latest_result}です。将来は{user_job}になりたいと思っています。ユーザが将来{user_job}に就いた時のシナリオを生成してください。"
-        scenario = scenario_chain.invoke(input)
+        session['USERJOB'] = rcv.get("job", "")
+        input = f"ユーザの性格タイプは{session['USERTYPE']}です。将来は{session['USERJOB']}になりたいと思っています。ユーザが将来{session['USERJOB']}に就いた時のシナリオを生成してください。"
+        session["SCENARIO"] = scenario_chain.invoke(input)
         return jsonify({"scenarioReady": True})  # シナリオが生成されたことを示すフラグ
     elif request.method == 'GET':
-        if scenario:
-            return jsonify({"scenario": scenario, "type": latest_result, "job": user_job})  # シナリオを返す
+        if 'SCENARIO' in session:
+            return jsonify({"scenario": session["SCENARIO"], "type": session["USERTYPE"], "job": session["USERJOB"]})  # シナリオを返す
         else:
             return jsonify({"error": "No scenario found"}), 404  # シナリオがない場合
     
