@@ -1,7 +1,6 @@
 from flask import Flask, send_from_directory, request, jsonify, session
 from flask_cors import CORS
 import os
-import logging
 from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.document_loaders import TextLoader
@@ -10,9 +9,13 @@ from langchain_chroma import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
+from flask_caching import Cache
 
 my_app = Flask(__name__, static_folder='static')
 my_app.secret_key = os.getenv("FLASK_SECRET_KEY")
+my_app.config["CACHE_DEFAULT_TIMEOUT"] = 600
+my_app.config["CACHE_TYPE"] = "simple"
+cache = Cache(my_app)
 CORS(my_app)
 
 # # グローバル変数に性格診断の結果を一時的に保持
@@ -29,7 +32,6 @@ def serve_frontend():
 # 環境変数
 openai_api_key = os.getenv("OPENAI_API_KEY")
 openai_api_base = os.getenv("OPENAI_API_BASE")
-logging.info(f"APIキー: {openai_api_key}, APIベース: {openai_api_base}")
 llm = ChatOpenAI(api_key=openai_api_key, base_url=openai_api_base, model="gpt-4o-mini", temperature=0)
 file_path = os.path.join(os.path.dirname(__file__), 'learn_16personalities.txt')
 
@@ -91,6 +93,7 @@ rag_chain = (
 )
 
 @my_app.route('/api/type', methods=["POST", "GET"])
+@cache.cached(unless=lambda: request.method == 'POST')
 def user_type():
     # global latest_result
     
@@ -167,6 +170,7 @@ scenario_chain = (
 )    
 
 @my_app.route('/api/scenario', methods=['POST', 'GET'])
+@cache.cached(unless=lambda: request.method == 'POST')
 def scenario_gen():
     # global scenario  # グローバル変数を参照
     # global user_job
@@ -182,5 +186,5 @@ def scenario_gen():
         else:
             return jsonify({"error": "No scenario found"}), 404  # シナリオがない場合
     
-# if __name__ == "__main__":
-#     my_app.run()
+if __name__ == "__main__":
+    my_app.run()

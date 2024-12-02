@@ -26,30 +26,29 @@
   font-size: 20px;
 }
 
-.intro-area {
-  position: relative;
-  padding: 0.10em 1em;
-  border: solid 2px black;
-  border-radius: 3px 0 3px 0;
+.introBtn {
+  padding-bottom: 20px;
 }
 
-.intro-area:before, .intro-area:after {
-  content: '';
-  position: absolute;
-  width:15px;
-  height: 15px;
-  border: solid 2px black;
-  border-radius: 50%;
+.intro-title {
+  font-family: "Hiragino Sans";
+  font-size: 25px;
+  border-bottom: solid 3px red;
 }
 
-.intro-area:after {
-  top:-12px;
-  left:-12px;
+.intro-text {
+  font-family: "Hiragino Sans";
+  font-weight: 300;
+  font-size: 20px;
 }
 
-.intro-area:before {
-  bottom:-12px;
-  right:-12px;
+.intro-ul {
+  font-family: "Hiragino Sans";
+  font-size: 25px;
+}
+
+.intro-box {
+  padding-bottom: 15px;
 }
 
 
