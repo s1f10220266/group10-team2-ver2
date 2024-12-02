@@ -91,7 +91,7 @@ function TopPage() {
               <div className='col-auto'>
                 <strong className='intro-title'>開発者について</strong>
                 <p className='intro-text'>以下のサイトにアプリや、チームの紹介をまとめております。</p>
-                <a className='intro-text' href='https://sites.google.com/iniad.org/1002/%E3%83%9B%E3%83%BC%E3%83%A0'>Google Site</a>
+                <a className='intro-text' href='https://sites.google.com/iniad.org/1002/%E3%83%9B%E3%83%BC%E3%83%A0' target='_blank'>Google Site</a>
               </div>
             )}
           </div>
